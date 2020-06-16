@@ -39,7 +39,7 @@ jobs:
         with:
           commit_message: Build wasm
           branch: ${{ github.head_ref }}
-          file_pattern: docs/wasm*
+          file_pattern: docs/*
 #   test:
 #     runs-on: '${{ matrix.os }}'
 #     strategy:
