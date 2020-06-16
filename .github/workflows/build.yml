@@ -25,9 +25,8 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - uses: actions-rs/cargo@v1
-        with:
-          command: install wasm-pack
+      - name: install wasm-pack
+        run: cargo install wasm-pack
       - name: build
         run: wasm-pack build --target web --out-name wasm --out-dir ./doc
 #   test:
