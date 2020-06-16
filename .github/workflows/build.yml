@@ -28,7 +28,9 @@ jobs:
       - name: install wasm-pack
         run: cargo install wasm-pack
       - name: build
-        run: wasm-pack build --target web --out-name wasm --out-dir ./doc
+        run: |
+          wasm-pack build --target web --out-name wasm --out-dir ./doc
+          rm ./doc/.gitignore
       - uses: actions/upload-artifact@master
         with:
           name: wasm.js
@@ -37,7 +39,7 @@ jobs:
         with:
           commit_message: Build wasm
           branch: ${{ github.head_ref }}
-          file_pattern: doc/wasm.js
+          file_pattern: doc/wasm*
 #   test:
 #     runs-on: '${{ matrix.os }}'
 #     strategy:
